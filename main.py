@@ -10,13 +10,13 @@ from modules.financeiro import (
     vendas_por_produto_cartesiano
 )
 from utils.validacoes import validar_opcao, confirmar_saida
-
+#limpar a tela
 def limpar_tela():
     os.system("cls" if os.name == "nt" else "clear")
 
 def pausar():
     input("\n🔹 Pressione ENTER para continuar...")
-
+#função com as opções disponiveis no menu
 def menu():
     return '''
     ===== SISTEMA DE GESTÃO VAREJISTA =====
@@ -29,7 +29,7 @@ def menu():
     4️⃣ Relatório de Vendas  
     5️⃣ Sair  
     '''
-
+#funções do menu de vendas
 def menu_vendas():
     opt = ''
     while opt != 5:
@@ -59,7 +59,7 @@ def menu_vendas():
         elif opt == 4:
             vendas_por_produto()
             pausar()
-
+#funções do menu financeiro 
 def menu_financeiro():
     opt = ''
     while opt != 4:

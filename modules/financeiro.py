@@ -1,6 +1,9 @@
 import sys
 import os
 import pandas as pd
+import matplotlib
+matplotlib.use("TkAgg")  
+
 import matplotlib.pyplot as plt
 # Adiciona o diretório superior ao sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -9,7 +12,7 @@ from utils.meses import meses
 
 
 
-
+#função para plotar o grafico do estoque
 def plot_estoque_restante():
     # Converter colunas para valores numéricos
     data['QUANT'] = pd.to_numeric(data['QUANT'], errors='coerce').fillna(0)
@@ -31,8 +34,10 @@ def plot_estoque_restante():
     plt.grid(axis='y', linestyle="--", alpha=0.7)  # Adicionar grade horizontal
 
     # Exibir gráfico
+    
     plt.show()
 
+#função para calcular os dados financeiros
 def dados_financeiros(opt:str):
     # Calcular o total investido, vendido e lucro/prejuízo
     total_investido = 0
@@ -70,6 +75,7 @@ def dados_financeiros(opt:str):
         else:
             print(f"Prejuízo Total: R$ {-total_lucro:.2f}")
 
+#função para plotar a quantidade de vendas por produto em grafico de barras
 def plot_quantidade_de_vendas_por_produto():
     global data
     # Calcular a quantidade total vendida de cada produto após 12 meses
@@ -88,7 +94,7 @@ def plot_quantidade_de_vendas_por_produto():
     plt.tight_layout()  # Ajustar layout para evitar cortes
     plt.show()
 
-
+#função para gerar um relatorio geral sobre as vendas da empresa
 def print_parecer():
     total_investido = (data['VC'] * data[meses].sum(axis=1)).sum()
     total_vendido = (data['VV'] * data[meses].sum(axis=1)).sum()
@@ -135,6 +141,7 @@ def print_parecer():
     # Exibir o parecer
     print(parecer)
 
+#função para printar os produtos com maior e menor lucro
 def print_produtos_maior_menor_lucro():
         for mes in meses:
             data[mes] = pd.to_numeric(data[mes], errors='coerce').fillna(0)
@@ -172,6 +179,7 @@ def vendas_por_produto_cartesiano():
     # Exibir gráfico
     plt.show()
 
+#função para plotar o grafico de vendas por produto
 def vendas_por_produto():
     global data
     data['Total Vendido'] = data[meses].sum(axis=1)

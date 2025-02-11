@@ -16,7 +16,7 @@ def plot_estoque_restante():
     for mes in meses:
         data[mes] = pd.to_numeric(data[mes], errors='coerce').fillna(0)
 
-    # 📉 **Calcular o estoque restante**
+    # Calcular o estoque restante
     data['ESTOQUE_FINAL'] = data['QUANT'] - data[meses].sum(axis=1)
 
     # 📊 Criar gráfico de barras
@@ -24,8 +24,8 @@ def plot_estoque_restante():
     plt.bar(data['PROD'], data['ESTOQUE_FINAL'], color='skyblue')
 
     # Personalização do gráfico
-    plt.xlabel("Produtos")  # Nome do eixo X
-    plt.ylabel("Estoque Restante")  # Nome do eixo Y
+    plt.xlabel("Produtos")  # Eixo X
+    plt.ylabel("Estoque Restante")  # Eixo Y
     plt.title("Estoque Final de Cada Produto após 12 Meses")  # Título do gráfico
     plt.xticks(rotation=45)  # Rotacionar nomes dos produtos
     plt.grid(axis='y', linestyle="--", alpha=0.7)  # Adicionar grade horizontal
@@ -83,7 +83,7 @@ def plot_quantidade_de_vendas_por_produto():
     plt.bar(data['PROD'], data['Total Vendido'], color='skyblue')
     plt.xlabel('Produtos')
     plt.ylabel('Quantidade Total Vendida')
-    plt.title('Quantidade de Vendas de Cada Produto após 12 Meses')
+    plt.title('Produtos mais vendidos em ordem decrescente')
     plt.xticks(rotation=45, ha='right')  # Rotacionar os nomes dos produtos para melhor visualização
     plt.tight_layout()  # Ajustar layout para evitar cortes
     plt.show()

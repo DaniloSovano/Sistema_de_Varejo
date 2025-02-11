@@ -1,6 +1,6 @@
 import pandas as pd
 #obtem o arquivo csv a partir de uma url
-url = 'https://raw.githubusercontent.com/DaniloSovano/Sistema_de_Varejo/refs/heads/main/database/base_de_varejo.csv'
+url = 'https://raw.githubusercontent.com/DaniloSovano/Sistema_de_Varejo/refs/heads/main/base_de_varejo.csv'
 
 #lẽ o arquivo utilizando pandas
 data = pd.read_csv(url)
